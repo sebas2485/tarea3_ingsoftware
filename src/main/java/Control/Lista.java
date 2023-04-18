@@ -24,7 +24,7 @@ public class Lista {
     public String mostrarListaRegalos() {
 
         double envio = 0;
-        int cont = 0;
+        boolean aux = true;
         StringBuilder sb = new StringBuilder(); // StringBuilder para generar el String de la lista de regalos
 
         for (int i = 0; i < regalos.size(); i++) {
@@ -40,7 +40,7 @@ public class Lista {
                     & comprador.getPrecioMaximo() >= regalos.get(i).getPrecioBase()) { // Se verifica si el regalo
                                                                                        // cumple con los criterios del
                                                                                        // comprador
-                cont++; // Contador de regalos encontrados
+                aux=false; //Regalos encontrados
                 sb.append(regalos.get(i).getNombre()).append(": Precio Base: ").append(regalos.get(i).getPrecioBase())
                         .append(". Precio Envio: ").append(envio).append(". Precio Total: ")
                         .append(regalos.get(i).getPrecioBase() + envio).append("\n"); // Se agrega la información del
@@ -48,7 +48,7 @@ public class Lista {
             }
 
         }
-        if (cont == 0) { // Si no se encontraron regalos que cumplan con los criterios del comprador
+        if (aux) { // Si no se encontraron regalos que cumplan con los criterios del comprador
             sb.append("\nNo se tiene productos para esa edad o precio\n"); // Se agrega un mensaje indicando que no se
                                                                            // encontraron regalos
         }
